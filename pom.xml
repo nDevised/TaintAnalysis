@@ -38,8 +38,38 @@
             <version>1.2.3</version>
         </dependency>
         <dependency>
-            <groupId>de.fraunhofer.iem</groupId>
-            <artifactId>boomerangPDS</artifactId>
+            <groupId>de.fraunhofer.iem.boomerangPDS</groupId>
+            <artifactId>boomerangpds</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fraunhofer.iem.SPDS</groupId>
+            <artifactId>spds</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fraunhofer.iem.boomerangScope</groupId>
+            <artifactId>boomerangscope</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fraunhofer.iem.synchronizedPDS</groupId>
+            <artifactId>synchronizedpds</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fraunhofer.iem.WPDS</groupId>
+            <artifactId>wpds</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fraunhofer.iem.testCore</groupId>
+            <artifactId>testcore</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>de.fraunhofer.iem.idealPDS</groupId>
+            <artifactId>idealpds</artifactId>
             <version>3.1.1</version>
         </dependency>
         <dependency>
@@ -52,6 +82,11 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.fraunhofer.iem</groupId>
+            <artifactId>WPDS</artifactId>
+            <version>3.1.1</version>
         </dependency>
     </dependencies>
 </project>
