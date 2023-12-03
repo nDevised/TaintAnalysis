@@ -16,7 +16,11 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 public class Main {
-    // The IFDSTestSetupClass is being re-used for the purp
+    /**
+     * The main entry point of the program.
+     *
+     * @param args Command line arguments, expects a single argument: the fully qualified name of the class to analyze.
+     */
     protected static JimpleIFDSSolver<?, ?> solver = null;
     public static void main(String[] args) {
         if (args.length != 1) {
@@ -30,6 +34,11 @@ public class Main {
 
     }
 
+    /**
+     * Executes the taint analysis on the specified class.
+     *
+     * @param targetClass The fully qualified name of the class to analyze.
+     */
     public void run(String targetClass){
         JimpleIFDSSolver<?, ? extends InterproceduralCFG<Unit, SootMethod>> analysis = executeStaticAnalysis(targetClass);
         Set<String> defaultIDEResult = getResult(analysis);
@@ -37,6 +46,11 @@ public class Main {
 
     }
 
+    /**
+     * Sets up the Soot framework for static analysis.
+     *
+     * @param targetClass The fully qualified name of the class to set up for analysis.
+     */
     private void setupSoot(String targetClass) {
 
         G.reset();
@@ -67,6 +81,11 @@ public class Main {
 
     }
 
+    /**
+     * Retrieves the entry point method for the analysis.
+     *
+     * @return The SootMethod that serves as the entry point of the analysis.
+     */
     protected SootMethod getEntryPointMethod() {
         for (SootClass c : Scene.v().getApplicationClasses()) {
             for (SootMethod m : c.getMethods()) {
@@ -81,11 +100,20 @@ public class Main {
         throw new IllegalArgumentException("Method does not exist in scene!");
     }
 
+    /**
+     * Registers the transformers required for the Soot analysis.
+     * Transformers are useful to perform the analysis in SOOT
+     */
     private void registerSootTransformers() {
         Transform transform = new Transform("wjtp.ifds", createAnalysisTransformer());
         PackManager.v().getPack("wjtp").add(transform);
     }
 
+    /**
+     * Creates a SceneTransformer for the purpose of taint analysis.
+     *
+     * @return A SceneTransformer configured for taint analysis.
+     */
     protected Transformer createAnalysisTransformer() {
         List<SootMethodRef> sources = new ArrayList<>();
         List<SootMethodRef> sinks = new ArrayList<>();
@@ -115,6 +143,12 @@ public class Main {
         };
     }
 
+    /**
+     * Extracts the taint analysis results from the analysis object.
+     *
+     * @param analysis The analysis object from which to extract results.
+     * @return A set of strings representing the taint analysis results.
+     */
     private Set<String> getResult(Object analysis) {
         SootMethod m = getEntryPointMethod();
         Map<DFF, Integer> res = null;
@@ -129,6 +163,11 @@ public class Main {
         return result;
     }
 
+    /**
+     * Displays the taint analysis results.
+     *
+     * @param defaultIDEResult A set of strings representing the taint analysis results.
+     */
     private void displayResults(Set<String> defaultIDEResult) {
         if (defaultIDEResult.isEmpty()) {
             System.out.println("No tainted elements found.");
@@ -140,6 +179,12 @@ public class Main {
         }
     }
 
+    /**
+     * Executes the static analysis using Soot.
+     *
+     * @param targetTestClassName The fully qualified name of the test class to analyze.
+     * @return An instance of JimpleIFDSSolver after completing the analysis.
+     */
     protected JimpleIFDSSolver<?, ?> executeStaticAnalysis(String targetTestClassName) {
         setupSoot(targetTestClassName);
         registerSootTransformers();
@@ -150,6 +195,9 @@ public class Main {
         return solver;
     }
 
+    /**
+     * Executes the necessary Soot transformers as part of the analysis process.
+     */
     private void executeSootTransformers() {
         //Apply all necessary packs of soot. This will execute the respective Transformer
         PackManager.v().getPack("cg").apply();
