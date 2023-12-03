@@ -20,12 +20,15 @@ public class Main {
      */
     protected static JimpleIFDSSolver<?, ?> solver = null;
 
-    // BEFORE PROCEEDING SET CLASS_NAME, SOURCE1, SOURCE2, SINK1, SINK2, or set DEFAULT = TRUE for default config.
+    // CLASS_NAME MUST BE SET
+    // CUSTOM_ENTRY IS OPTIONAL (IF THE MAIN METHOD IS NOT THE ENTRY POINT)
+    // BEFORE PROCEEDING SET SOURCE1, SOURCE2, SINK1, SINK2, or set DEFAULT = TRUE for default config.
     // ALSO SET THE STATIC STATUS OF
     // YOU CAN LEAVE SOURCE2 AND SINK2 as "" IF YOU AREN'T PLANNING ON USING A STATIC SOURCE FROM THE SAME CLASS
     // SOURCES AND SINKS ARE LOCATED IN "target.taint.internal"
 
     private static final String CLASS_NAME = "target.taint.Branching3";
+    private final String CUSTOM_ENTRY = "";
     private final boolean DEFAULT = false;
     private final String  SOURCE_CLASS = "target.taint.internal.SourceClass";
     private final String  SOURCE = "anInstanceSource";
@@ -99,7 +102,7 @@ public class Main {
                 if (!m.hasActiveBody()) {
                     continue;
                 }
-                if (m.getName().equals("entryPoint") || m.toString().contains("void main(java.lang.String[])")) {
+                if (m.getName().equals("entryPoint") || m.toString().contains("void main(java.lang.String[])") || m.getName().equals(CUSTOM_ENTRY)) {
                     return m;
                 }
             }
