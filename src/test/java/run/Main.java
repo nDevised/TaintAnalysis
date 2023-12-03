@@ -20,22 +20,22 @@ public class Main {
      */
     protected static JimpleIFDSSolver<?, ?> solver = null;
 
-    // BEFORE PROCEEDING SET CLASS, SOURCE1, SOURCE2, SINK1, SINK2, or set DEFAULT = TRUE for default config.
+    // BEFORE PROCEEDING SET CLASS_NAME, SOURCE1, SOURCE2, SINK1, SINK2, or set DEFAULT = TRUE for default config.
     // ALSO SET THE STATIC STATUS OF
     // YOU CAN LEAVE SOURCE2 AND SINK2 as "" IF YOU AREN'T PLANNING ON USING A STATIC SOURCE FROM THE SAME CLASS
     // SOURCES AND SINKS ARE LOCATED IN "target.taint.internal"
-    private boolean DEFAULT = true;
 
-    private static final String CLASS = "target.taint.Branching3";
-    private static final String  SOURCE_CLASS = "";
-    private static final String  SOURCE = "";
-    private static final String STATIC_SOURCE = "";
-    private static final String  SINK_CLASS = "";
-    private static final String  SINK = "";
-    private static final String STATIC_SINK = "";
+    private static final String CLASS_NAME = "target.taint.Branching3";
+    private final boolean DEFAULT = false;
+    private final String  SOURCE_CLASS = "target.taint.internal.SourceClass";
+    private final String  SOURCE = "anInstanceSource";
+    private final String STATIC_SOURCE = "aStaticSource";
+    private final String  SINK_CLASS = "target.taint.internal.SinkClass";
+    private final String  SINK = "anInstanceSink";
+    private final String STATIC_SINK = "aStaticSink";
     public static void main(String[] args) {
 
-        String targetClass = CLASS;
+        String targetClass = CLASS_NAME;
         Main main = new Main();
         main.run(targetClass);
 
@@ -239,8 +239,6 @@ public class Main {
         BoomerangPretransformer.v().apply();
         PackManager.v().getPack("wjtp").apply();
     }
-
-
 
 }
 
