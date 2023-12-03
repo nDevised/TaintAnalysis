@@ -8,28 +8,34 @@ import soot.*;
 import soot.jimple.toolkits.ide.JimpleIFDSSolver;
 import soot.jimple.toolkits.ide.icfg.JimpleBasedInterproceduralCFG;
 import soot.options.Options;
-import test.base.IFDSTestSetUp;
 
 import java.io.File;
 import java.util.*;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+
 public class Main {
     /**
      * The main entry point of the program.
-     * Usage: Main <class-to-analyze> <source class name> <source method> <sink class name> <sink method>
      * NOTE: This analysis is designed so that only Strings are tainted
      * @param args Command line arguments, expects a single argument: the fully qualified name of the class to analyze.
      */
     protected static JimpleIFDSSolver<?, ?> solver = null;
-    public static void main(String[] args) {
-        if (args.length != 1) {
-            System.err.println("Usage: Main <class-to-analyze> <source class name> <source method> <sink class name> <sink method>");
-            return;
-        }
 
-        String targetClass = args[0];
+    // BEFORE PROCEEDING SET CLASS, SOURCE1, SOURCE2, SINK1, SINK2, or set DEFAULT = TRUE for default config.
+    // ALSO SET THE STATIC STATUS OF
+    // YOU CAN LEAVE SOURCE2 AND SINK2 as "" IF YOU AREN'T PLANNING ON USING A STATIC SOURCE FROM THE SAME CLASS
+    // SOURCES AND SINKS ARE LOCATED IN "target.taint.internal"
+    private boolean DEFAULT = true;
+
+    private static final String CLASS = "target.taint.Branching3";
+    private static final String  SOURCE_CLASS = "";
+    private static final String  SOURCE = "";
+    private static final String STATIC_SOURCE = "";
+    private static final String  SINK_CLASS = "";
+    private static final String  SINK = "";
+    private static final String STATIC_SINK = "";
+    public static void main(String[] args) {
+
+        String targetClass = CLASS;
         Main main = new Main();
         main.run(targetClass);
 
@@ -118,18 +124,44 @@ public class Main {
     protected Transformer createAnalysisTransformer() {
         List<SootMethodRef> sources = new ArrayList<>();
         List<SootMethodRef> sinks = new ArrayList<>();
-        SootClass sourceClass = new SootClass("target.taint.internal.SourceClass");
-        SootMethodRef source1 = new SootMethodRefImpl(sourceClass, "anInstanceSource", Collections.emptyList(), RefType.v("java.lang.String"), false);
-        SootMethodRef source2 = new SootMethodRefImpl(sourceClass, "aStaticSource", Collections.emptyList(), RefType.v("java.lang.String"), true);
+        SootClass sourceClass;
+        SootMethodRef source1;
+        SootMethodRef source2;
+        SootClass sinkClass;
+        SootMethodRef sink1;
+        SootMethodRef sink2;
 
-        SootClass sinkClass = new SootClass("target.taint.internal.SinkClass");
-        SootMethodRef sink1 = new SootMethodRefImpl(sinkClass, "anInstanceSink", Collections.emptyList(), RefType.v("java.lang.String"), false);
-        SootMethodRef sink2 = new SootMethodRefImpl(sinkClass, "aStaticSink", Collections.emptyList(), RefType.v("java.lang.String"), true);
+        if (DEFAULT){
+            sourceClass = new SootClass("target.taint.internal.SourceClass");
+            source1 = new SootMethodRefImpl(sourceClass, "anInstanceSource", Collections.emptyList(), RefType.v("java.lang.String"), false);
+            source2 = new SootMethodRefImpl(sourceClass, "aStaticSource", Collections.emptyList(), RefType.v("java.lang.String"), true);
 
-        sources.add(source1);
-        sources.add(source2);
-        sinks.add(sink1);
-        sinks.add(sink2);
+            sinkClass = new SootClass("target.taint.internal.SinkClass");
+            sink1 = new SootMethodRefImpl(sinkClass, "anInstanceSink", Collections.emptyList(), RefType.v("java.lang.String"), false);
+            sink2 = new SootMethodRefImpl(sinkClass, "aStaticSink", Collections.emptyList(), RefType.v("java.lang.String"), true);
+            sources.add(source1);
+            sources.add(source2);
+            sinks.add(sink1);
+            sinks.add(sink2);
+        } else{
+            sourceClass = new SootClass(SOURCE_CLASS);
+            source1 = new SootMethodRefImpl(sourceClass, SOURCE, Collections.emptyList(), RefType.v("java.lang.String"), false);
+
+            if (STATIC_SOURCE != ""){
+                source2 = new SootMethodRefImpl(sourceClass, STATIC_SOURCE, Collections.emptyList(), RefType.v("java.lang.String"), true);
+                sources.add(source2);
+            }
+            sinkClass = new SootClass(SINK_CLASS);
+            sink1 = new SootMethodRefImpl(sinkClass, SINK, Collections.emptyList(), RefType.v("java.lang.String"), false);
+
+            if (STATIC_SINK != ""){
+                sink2 = new SootMethodRefImpl(sinkClass, STATIC_SINK, Collections.emptyList(), RefType.v("java.lang.String"), true);
+                sinks.add(sink2);
+            }
+            sources.add(source1);
+            sinks.add(sink1);
+        }
+
 
         return new SceneTransformer() {
             @Override
