@@ -2,28 +2,25 @@ package target.taint;
 import target.taint.internal.Request;
 import target.taint.internal.QueryExecuter;
 
+import java.util.Objects;
+
 // CODE ADAPTED FROM DR. KARIM ALI
 public class CustomServlet {
     public static void main(String[] args){
 
+        String user;
         Request request = new Request("$");
-        String studentId = request.get(); // Using custom Request class
-        StringBuilder sb = new StringBuilder("SELECT * FROM Students WHERE studId='");
+        String userRaw = request.get(); // Using custom Request class
 
-        boolean var1 = true; // Replace this with your actual condition
-
-        if (var1) {
-            sb.append(studentId);
+        if (!Objects.equals(userRaw, "")) {
+            user = userRaw;
         } else {
-            sb.append("123456");
+            user = "defaultuser0";
         }
-
-        sb.append("'");
-        String query = sb.toString();
 
         QueryExecuter queryExecuter = new QueryExecuter(); // Using custom QueryExecuter
         try {
-            queryExecuter.executeQuery(query); // Execute the query using custom sink
+            queryExecuter.validateUser(user); // Execute the query using custom sink
         } catch (Exception e) {
             e.printStackTrace();
         }

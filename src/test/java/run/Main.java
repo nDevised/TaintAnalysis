@@ -34,7 +34,7 @@ public class Main {
     private final String  SOURCE = "get";
     private final String STATIC_SOURCE = "";
     private final String  SINK_CLASS = "target.taint.internal.QueryExecuter";
-    private final String  SINK = "queryExecuter";
+    private final String  SINK = "validateUser";
     private final String STATIC_SINK = "";
     public static void main(String[] args) {
 
