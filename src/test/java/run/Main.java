@@ -21,21 +21,21 @@ public class Main {
     protected static JimpleIFDSSolver<?, ?> solver = null;
 
     // CLASS_NAME MUST BE SET
-    // CUSTOM_ENTRY IS OPTIONAL (IF THE MAIN METHOD IS NOT THE ENTRY POINT)
+    // ONLY ENTRY POINT POSSIBLE IS MAIN
     // BEFORE PROCEEDING SET SOURCE1, SOURCE2, SINK1, SINK2, or set DEFAULT = TRUE for default config.
     // ALSO SET THE STATIC STATUS OF
     // YOU CAN LEAVE SOURCE2 AND SINK2 as "" IF YOU AREN'T PLANNING ON USING A STATIC SOURCE FROM THE SAME CLASS
     // SOURCES AND SINKS ARE LOCATED IN "target.taint.internal"
 
-    private static final String CLASS_NAME = "target.taint.Branching3";
-    private final String CUSTOM_ENTRY = "";
+    private static final String CLASS_NAME = "target.taint.CustomServlet";
+
     private final boolean DEFAULT = false;
-    private final String  SOURCE_CLASS = "target.taint.internal.SourceClass";
-    private final String  SOURCE = "anInstanceSource";
-    private final String STATIC_SOURCE = "aStaticSource";
-    private final String  SINK_CLASS = "target.taint.internal.SinkClass";
-    private final String  SINK = "anInstanceSink";
-    private final String STATIC_SINK = "aStaticSink";
+    private final String  SOURCE_CLASS = "target.taint.internal.Request";
+    private final String  SOURCE = "get";
+    private final String STATIC_SOURCE = "";
+    private final String  SINK_CLASS = "target.taint.internal.QueryExecuter";
+    private final String  SINK = "queryExecuter";
+    private final String STATIC_SINK = "";
     public static void main(String[] args) {
 
         String targetClass = CLASS_NAME;
@@ -102,7 +102,7 @@ public class Main {
                 if (!m.hasActiveBody()) {
                     continue;
                 }
-                if (m.getName().equals("entryPoint") || m.toString().contains("void main(java.lang.String[])") || m.getName().equals(CUSTOM_ENTRY)) {
+                if (m.getName().equals("entryPoint") || m.toString().contains("void main(java.lang.String[])")) {
                     return m;
                 }
             }
