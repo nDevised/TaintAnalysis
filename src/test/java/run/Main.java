@@ -18,13 +18,14 @@ import java.util.stream.Collectors;
 public class Main {
     /**
      * The main entry point of the program.
-     *
+     * Usage: Main <class-to-analyze> <source class name> <source method> <sink class name> <sink method>
+     * NOTE: This analysis is designed so that only Strings are tainted
      * @param args Command line arguments, expects a single argument: the fully qualified name of the class to analyze.
      */
     protected static JimpleIFDSSolver<?, ?> solver = null;
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.err.println("Usage: Main <class-to-analyze>");
+            System.err.println("Usage: Main <class-to-analyze> <source class name> <source method> <sink class name> <sink method>");
             return;
         }
 
