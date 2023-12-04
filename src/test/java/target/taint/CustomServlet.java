@@ -18,7 +18,7 @@ public class CustomServlet {
             user = "defaultuser0";
         }
 
-        QueryExecuter queryExecuter = new QueryExecuter(); 
+        QueryExecuter queryExecuter = new QueryExecuter();
         try {
             queryExecuter.validateUser(user);
         } catch (Exception e) {
