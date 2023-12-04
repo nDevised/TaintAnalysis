@@ -6,7 +6,6 @@ public class BasicTestMedium {
         String ip = req.get();
         InputHandler qe = new InputHandler();
         String refinedIp = "";
-        // Initial checks are condensed into a single message variable
         String message = "";
         if (ip.isEmpty()) {
             message = "No input provided";
@@ -15,29 +14,18 @@ public class BasicTestMedium {
         } else {
             refinedIp = new InputRefiner().refineInput(ip);
             message = processInput(refinedIp);
-
         }
-        // Print the final message
         qe.passInput(refinedIp); // Pass the input only if it passes initial checks
         System.out.println(message);
     }
     private static String processInput(String input) {
-        // Single branching scenario
         if (input.length() > 100) {
             return "Input is too long";
+        } else if (input.isEmpty()){
+            return "Input is empty";
+        } else if (input.contains("$")){
+            return "Invalid Input";
         }
-        // Assignment propagation
-        String accessType = input.contains("admin") ? "Admin access requested" : "User access requested";
-        String inputType = isNumeric(input) ? "Numeric input" : "Non-numeric input";
-        String requestType = isLoginRequest(input) ? "Login request" : "General request";
-
-        // Constructing a consolidated message
-        return accessType + "\n" + inputType + "\n" + requestType + "\nInput handling completed";
-    }
-    private static boolean isNumeric(String input) {
-        return false; // Placeholder
-    }
-    private static boolean isLoginRequest(String input) {
-        return false; // Placeholder
+        return "Input handling completed";
     }
 }
