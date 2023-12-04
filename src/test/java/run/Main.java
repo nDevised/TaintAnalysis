@@ -27,8 +27,8 @@ public class Main {
     // YOU CAN LEAVE SOURCE2 AND SINK2 as "" IF YOU AREN'T PLANNING ON USING A STATIC SOURCE FROM THE SAME CLASS
     // SOURCES AND SINKS ARE LOCATED IN "target.taint.internal"
 
-    private static final String CLASS_NAME = "target.taint.ObfuscatedTaint";
-    private final boolean DEFAULT = false;
+    private static final String CLASS_NAME = "target.taint.Loop2";
+    private final boolean DEFAULT = true;
     private final String  SOURCE_CLASS = "target.taint.internal.ClassA";
     private final String  SOURCE = "methodA";
     private final String STATIC_SOURCE = "";
