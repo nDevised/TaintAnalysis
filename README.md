@@ -6,6 +6,7 @@ which uses Boomerang to resolve aliasing.
 Following dependencies must be built to run the analysis.
 - Heros: https://github.com/Sable/heros
 - BoomerangPDS: https://github.com/CodeShield-Security/SPDS
+- WPDS: https://drive.google.com/drive/folders/1Rikse-1NYmkVyzCEMveY8NsXX2fWGsBE?usp=sharing
 
 ## How to run
 - Various test cases are listed under `test/target/taint`
