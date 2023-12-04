@@ -10,7 +10,7 @@ public class CustomServlet {
 
         String user;
         Request request = new Request("$");
-        String userRaw = request.get(); // Using custom Request class
+        String userRaw = request.get();
 
         if (!Objects.equals(userRaw, "")) {
             user = userRaw;
@@ -18,9 +18,9 @@ public class CustomServlet {
             user = "defaultuser0";
         }
 
-        QueryExecuter queryExecuter = new QueryExecuter(); // Using custom QueryExecuter
+        QueryExecuter queryExecuter = new QueryExecuter(); 
         try {
-            queryExecuter.validateUser(user); // Execute the query using custom sink
+            queryExecuter.validateUser(user);
         } catch (Exception e) {
             e.printStackTrace();
         }

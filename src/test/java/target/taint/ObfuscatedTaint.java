@@ -1,22 +1,22 @@
 package target.taint;
 import target.taint.internal.ClassA;
 import target.taint.internal.ClassX;
+import target.taint.internal.SampleFields;
 public class ObfuscatedTaint {
-    private String obfField;
     public static void main(String[] args) {
-        new ObfuscatedTaint().funct1(args.length > 0 ? args[0] : "default");
-    }
-    private void funct1(String arg) {
-        ClassA src = new ClassA();
-        obfField = src.methodA(arg);
-        funct2();
-    }
-    private void funct2() {
-        ClassX sink = new ClassX();
-        String obfVar = obfField;
-        if (obfVar.hashCode() % 2 == 0) {
-            obfVar = "obfuscated";
+        ClassA alpha = new ClassA();
+        ClassX omega = new ClassX();
+        SampleFields fields = new SampleFields();
+        String data1 = "info1";
+        fields.x = alpha.methodA();
+        String intermediateVar;
+        if (fields.x.length() > 5) {
+            intermediateVar = fields.x;
+        } else {
+            intermediateVar = data1;
         }
-        sink.methodX(obfVar);
+        fields.y = intermediateVar;
+        fields.z = "info2";
+        omega.methodX(fields.y);
     }
 }

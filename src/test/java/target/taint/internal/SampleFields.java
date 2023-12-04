@@ -1,10 +1,10 @@
 package target.taint.internal;
 
 public class SampleFields {
-    String x; 
-    String y;
-    String z;
-    String a;
-    String b;
-    String c;
+    public String x;
+    public String y;
+    public String z;
+    public String a;
+    public String b;
+    public String c;
 }
