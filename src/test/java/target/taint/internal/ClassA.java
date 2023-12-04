@@ -1,6 +1,6 @@
 package target.taint.internal;
 
-// OBFUSCATED SINK
+// OBFUSCATED SOURCE
 public class ClassA {
     public String methodA(String X){
         return "success";
