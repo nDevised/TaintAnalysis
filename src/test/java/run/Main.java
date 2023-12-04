@@ -28,7 +28,6 @@ public class Main {
     // SOURCES AND SINKS ARE LOCATED IN "target.taint.internal"
 
     private static final String CLASS_NAME = "target.taint.CustomServlet";
-
     private final boolean DEFAULT = false;
     private final String  SOURCE_CLASS = "target.taint.internal.Request";
     private final String  SOURCE = "get";
