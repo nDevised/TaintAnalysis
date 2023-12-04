@@ -27,13 +27,13 @@ public class Main {
     // YOU CAN LEAVE SOURCE2 AND SINK2 as "" IF YOU AREN'T PLANNING ON USING A STATIC SOURCE FROM THE SAME CLASS
     // SOURCES AND SINKS ARE LOCATED IN "target.taint.internal"
 
-    private static final String CLASS_NAME = "target.taint.Loop2";
-    private final boolean DEFAULT = true;
-    private final String  SOURCE_CLASS = "target.taint.internal.ClassA";
-    private final String  SOURCE = "methodA";
+    private static final String CLASS_NAME = "target.taint.BasicTestMedium";
+    private final boolean DEFAULT = false;
+    private final String  SOURCE_CLASS = "target.taint.internal.Request";
+    private final String  SOURCE = "get";
     private final String STATIC_SOURCE = "";
-    private final String  SINK_CLASS = "target.taint.internal.ClassX";
-    private final String  SINK = "methodX";
+    private final String  SINK_CLASS = "target.taint.internal.InputHandler";
+    private final String  SINK = "passInput";
     private final String STATIC_SINK = "";
     public static void main(String[] args) {
 
