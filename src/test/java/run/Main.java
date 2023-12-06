@@ -27,14 +27,16 @@ public class Main {
     // YOU CAN LEAVE SOURCE2 AND SINK2 as "" IF YOU AREN'T PLANNING ON USING A STATIC SOURCE FROM THE SAME CLASS
     // SOURCES AND SINKS ARE LOCATED IN "target.taint.internal"
 
-    private static final String CLASS_NAME = "target.taint.BasicTestMedium";
-    private final boolean DEFAULT = false;
-    private final String  SOURCE_CLASS = "target.taint.internal.Request";
-    private final String  SOURCE = "get";
-    private final String STATIC_SOURCE = "";
-    private final String  SINK_CLASS = "target.taint.internal.InputHandler";
-    private final String  SINK = "passInput";
-    private final String STATIC_SINK = "";
+    private static final String CLASS_NAME = "target.taint.Context";
+    private final boolean DEFAULT = true;
+    private String  SOURCE_CLASS = "target.taint.internal.Request";
+    private String  SOURCE = "get";
+    private String STATIC_SOURCE = "";
+    private String  SINK_CLASS = "target.taint.internal.InputHandler";
+    private String  SINK = "passInput";
+    private String STATIC_SINK = "";
+
+
     public static void main(String[] args) {
 
         String targetClass = CLASS_NAME;
@@ -134,6 +136,12 @@ public class Main {
         SootMethodRef sink2;
 
         if (DEFAULT){
+            SOURCE_CLASS = "target.taint.internal.SourceClass";
+            SOURCE = "anInstanceSource";
+            STATIC_SOURCE = "aStaticSource";
+            SINK_CLASS = "target.taint.internal.InputHandler";
+            SINK = "target.taint.internal.SinkClass";
+            STATIC_SINK = "aStaticSink";
             sourceClass = new SootClass("target.taint.internal.SourceClass");
             source1 = new SootMethodRefImpl(sourceClass, "anInstanceSource", Collections.emptyList(), RefType.v("java.lang.String"), false);
             source2 = new SootMethodRefImpl(sourceClass, "aStaticSource", Collections.emptyList(), RefType.v("java.lang.String"), true);
@@ -204,6 +212,19 @@ public class Main {
      * @param defaultIDEResult A set of strings representing the taint analysis results.
      */
     private void displayResults(Set<String> defaultIDEResult) {
+
+        // Display the assigned Sources and sinks
+        System.out.println("Assigned Sources and Sinks");
+        System.out.println("Source Class:" + SOURCE_CLASS);
+        System.out.println("Source:" + SOURCE);
+        if(!(STATIC_SOURCE.isEmpty())) {
+            System.out.println("Static Source:" + STATIC_SOURCE);
+        }
+        System.out.println("Sink Class:" + SINK_CLASS);
+        System.out.println("Source:" + SINK);
+        if(!(STATIC_SOURCE.isEmpty())){
+            System.out.println("Static Source:" + STATIC_SINK);
+        }
         if (defaultIDEResult.isEmpty()) {
             System.out.println("No tainted elements found.");
         } else {
