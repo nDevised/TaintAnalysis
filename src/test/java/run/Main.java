@@ -135,42 +135,32 @@ public class Main {
         SootMethodRef sink1;
         SootMethodRef sink2;
 
-        if (DEFAULT){
+        if (DEFAULT) {
             SOURCE_CLASS = "target.taint.internal.SourceClass";
             SOURCE = "anInstanceSource";
             STATIC_SOURCE = "aStaticSource";
             SINK_CLASS = "target.taint.internal.InputHandler";
             SINK = "target.taint.internal.SinkClass";
             STATIC_SINK = "aStaticSink";
-            sourceClass = new SootClass("target.taint.internal.SourceClass");
-            source1 = new SootMethodRefImpl(sourceClass, "anInstanceSource", Collections.emptyList(), RefType.v("java.lang.String"), false);
-            source2 = new SootMethodRefImpl(sourceClass, "aStaticSource", Collections.emptyList(), RefType.v("java.lang.String"), true);
-
-            sinkClass = new SootClass("target.taint.internal.SinkClass");
-            sink1 = new SootMethodRefImpl(sinkClass, "anInstanceSink", Collections.emptyList(), RefType.v("java.lang.String"), false);
-            sink2 = new SootMethodRefImpl(sinkClass, "aStaticSink", Collections.emptyList(), RefType.v("java.lang.String"), true);
-            sources.add(source1);
-            sources.add(source2);
-            sinks.add(sink1);
-            sinks.add(sink2);
-        } else{
-            sourceClass = new SootClass(SOURCE_CLASS);
-            source1 = new SootMethodRefImpl(sourceClass, SOURCE, Collections.emptyList(), RefType.v("java.lang.String"), false);
-
-            if (STATIC_SOURCE != ""){
-                source2 = new SootMethodRefImpl(sourceClass, STATIC_SOURCE, Collections.emptyList(), RefType.v("java.lang.String"), true);
-                sources.add(source2);
-            }
-            sinkClass = new SootClass(SINK_CLASS);
-            sink1 = new SootMethodRefImpl(sinkClass, SINK, Collections.emptyList(), RefType.v("java.lang.String"), false);
-
-            if (STATIC_SINK != ""){
-                sink2 = new SootMethodRefImpl(sinkClass, STATIC_SINK, Collections.emptyList(), RefType.v("java.lang.String"), true);
-                sinks.add(sink2);
-            }
-            sources.add(source1);
-            sinks.add(sink1);
         }
+
+        sourceClass = new SootClass(SOURCE_CLASS);
+        source1 = new SootMethodRefImpl(sourceClass, SOURCE, Collections.emptyList(), RefType.v("java.lang.String"), false);
+
+        if (!STATIC_SOURCE.isEmpty()){
+            source2 = new SootMethodRefImpl(sourceClass, STATIC_SOURCE, Collections.emptyList(), RefType.v("java.lang.String"), true);
+            sources.add(source2);
+        }
+        sinkClass = new SootClass(SINK_CLASS);
+        sink1 = new SootMethodRefImpl(sinkClass, SINK, Collections.emptyList(), RefType.v("java.lang.String"), false);
+
+        if (!STATIC_SINK.isEmpty()){
+            sink2 = new SootMethodRefImpl(sinkClass, STATIC_SINK, Collections.emptyList(), RefType.v("java.lang.String"), true);
+            sinks.add(sink2);
+        }
+        sources.add(source1);
+        sinks.add(sink1);
+
 
 
         return new SceneTransformer() {
