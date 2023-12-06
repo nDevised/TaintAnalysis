@@ -27,8 +27,8 @@ public class Main {
     // YOU CAN LEAVE SOURCE2 AND SINK2 as "" IF YOU AREN'T PLANNING ON USING A STATIC SOURCE FROM THE SAME CLASS
     // SOURCES AND SINKS ARE LOCATED IN "target.taint.internal"
 
-    private static final String CLASS_NAME = "target.taint.BasicLargeTest";
-    private final boolean DEFAULT = false;
+    private static final String CLASS_NAME = "target.taint.OverallTestLarge";
+    private final boolean DEFAULT = true;
     private String  SOURCE_CLASS = "target.taint.internal.Request";
     private String  SOURCE = "get";
     private String STATIC_SOURCE = "";
