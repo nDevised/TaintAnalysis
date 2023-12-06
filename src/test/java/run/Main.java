@@ -27,8 +27,8 @@ public class Main {
     // YOU CAN LEAVE SOURCE2 AND SINK2 as "" IF YOU AREN'T PLANNING ON USING A STATIC SOURCE FROM THE SAME CLASS
     // SOURCES AND SINKS ARE LOCATED IN "target.taint.internal"
 
-    private static final String CLASS_NAME = "target.taint.Context";
-    private final boolean DEFAULT = true;
+    private static final String CLASS_NAME = "target.taint.BasicLargeTest";
+    private final boolean DEFAULT = false;
     private String  SOURCE_CLASS = "target.taint.internal.Request";
     private String  SOURCE = "get";
     private String STATIC_SOURCE = "";
@@ -204,16 +204,18 @@ public class Main {
     private void displayResults(Set<String> defaultIDEResult) {
 
         // Display the assigned Sources and sinks
+        System.out.println("Class being tested: " + CLASS_NAME);
+        System.out.println("------------------------------------------------------------------------");
         System.out.println("Assigned Sources and Sinks");
-        System.out.println("Source Class:" + SOURCE_CLASS);
-        System.out.println("Source:" + SOURCE);
+        System.out.println("Source Class: " + SOURCE_CLASS);
+        System.out.println("Source: " + SOURCE);
         if(!(STATIC_SOURCE.isEmpty())) {
-            System.out.println("Static Source:" + STATIC_SOURCE);
+            System.out.println("Static Source: " + STATIC_SOURCE);
         }
-        System.out.println("Sink Class:" + SINK_CLASS);
-        System.out.println("Source:" + SINK);
+        System.out.println("Sink Class: " + SINK_CLASS);
+        System.out.println("Source: " + SINK);
         if(!(STATIC_SOURCE.isEmpty())){
-            System.out.println("Static Source:" + STATIC_SINK);
+            System.out.println("Static Source: " + STATIC_SINK);
         }
         if (defaultIDEResult.isEmpty()) {
             System.out.println("No tainted elements found.");
