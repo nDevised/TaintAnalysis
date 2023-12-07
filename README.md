@@ -23,8 +23,7 @@ git clone https://github.com/nDevised/TaintAnalysis.git
 ```
 
 ### Setting Up Dependencies
-   - These need manual installation as Maven imports are no longer functional due to depreciated 
-Our project requires the following dependencies:
+   - These need manual installation as Maven imports are no longer functional due to being depreciated. Our project requires the following dependencies:
 
 1. **Heros**: [https://github.com/Sable/heros](https://github.com/Sable/heros)
 2. **BoomerangPDS**: [https://github.com/CodeShield-Security/SPDS](https://github.com/CodeShield-Security/SPDS)
