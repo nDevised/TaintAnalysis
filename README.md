@@ -23,7 +23,7 @@ git clone https://github.com/nDevised/TaintAnalysis.git
 ```
 
 ### Setting Up Dependencies
-
+   - These need manual installation as Maven imports are no longer functional due to depreciated 
 Our project requires the following dependencies:
 
 1. **Heros**: [https://github.com/Sable/heros](https://github.com/Sable/heros)
@@ -32,7 +32,7 @@ Our project requires the following dependencies:
    - Note: Original download not available, so hosted on Google Drive.
 4. **PDS**: [https://mvnrepository.com/artifact/de.fraunhofer.iem/synchronizedPDS/2.5.1](https://mvnrepository.com/artifact/de.fraunhofer.iem/synchronizedPDS/2.5.1)
 5. **Path Expression**: [https://mvnrepository.com/artifact/de.fraunhofer.iem/pathexpression](https://mvnrepository.com/artifact/de.fraunhofer.iem/pathexpression)
-   - These need manual installation as Maven imports are no longer functional due to depreciated links.
+links.
 6. Google Drive Archive (backup): [Google Drive Link](https://drive.google.com/drive/folders/1wPsFTwMdf0AIYBiDTeZbnXPk3idQja-h?usp=sharing)
 
 ### Configuring IntelliJ IDEA
