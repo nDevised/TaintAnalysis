@@ -63,10 +63,6 @@ Detailed instructions on how to use the tool are included in the project documen
 
 Contributions to the TaintAnalysis project are welcome. Please read our contribution guidelines for more information.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## Acknowledgments
 
 - Kadirayk for the original repository.
