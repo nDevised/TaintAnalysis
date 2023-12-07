@@ -213,9 +213,9 @@ public class Main {
             System.out.println("Static Source: " + STATIC_SOURCE);
         }
         System.out.println("Sink Class: " + SINK_CLASS);
-        System.out.println("Source: " + SINK);
+        System.out.println("Sink: " + SINK);
         if(!(STATIC_SOURCE.isEmpty())){
-            System.out.println("Static Source: " + STATIC_SINK);
+            System.out.println("Static Sink: " + STATIC_SINK);
         }
         if (defaultIDEResult.isEmpty()) {
             System.out.println("No tainted elements found.");
