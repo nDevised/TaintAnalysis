@@ -60,8 +60,8 @@ Youtube video for our SOOT implementation running: https://www.youtube.com/watch
 
 ## Usage of COMEX + GPT-4:
 1. Install all dependencies for COMEX ([COMEX](https://pypi.org/project/comex/), [GraphViz](https://graphviz.org/download/), [Python 3.8](https://www.python.org/downloads/release/python-380/)
-2. comex --lang "java" --code-file <File directory>  --graphs "cfg,dfg"
-3. dot -T png -o <File directory for output cfg png> <File directory for comex output> 
+2. comex --lang "java" --code-file \<File directory\> --graphs "cfg,dfg"
+3. dot -T png -o \<File directory for output cfg png\> \<File directory for comex output\>
 4. Use query: Generate a taint analysis propagation for this provided control flow graph in this image. Determine what is the taint from the provided control flow graph. Get ALL possible taint (perform a may-taint analysis).
 
 
