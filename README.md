@@ -30,6 +30,7 @@ git clone https://github.com/nDevised/TaintAnalysis.git
 5. **Path Expression**: [https://mvnrepository.com/artifact/de.fraunhofer.iem/pathexpression](https://mvnrepository.com/artifact/de.fraunhofer.iem/pathexpression)
 links.
 6. Google Drive Archive (backup): [Google Drive Link](https://drive.google.com/drive/folders/1wPsFTwMdf0AIYBiDTeZbnXPk3idQja-h?usp=sharing)
+7. **COMEX**: https://github.com/IBM/tree-sitter-codeviews 
 
 ### Configuring IntelliJ IDEA
 
@@ -63,5 +64,6 @@ Contributions to the TaintAnalysis project are welcome. Please read our contribu
 
 - Kadirayk for the original repository.
 - Contributors and maintainers of the SOOT framework.
+- Authors of the COMEX paper [arXiv:2307.04693]. 
 
 
