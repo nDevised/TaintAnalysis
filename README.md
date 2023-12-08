@@ -59,6 +59,7 @@ The visual usage of our SOOT library can be seen in this Youtube video:
 Youtube video for our SOOT implementation running: https://www.youtube.com/watch?v=Ji4r_-sXus0
 
 ## Usage of COMEX + GPT-4:
+Video of COMEX: https://youtu.be/BBkz_Agj4Mg
 1. Install all dependencies for COMEX ([COMEX](https://pypi.org/project/comex/), [GraphViz](https://graphviz.org/download/), [Python 3.8](https://www.python.org/downloads/release/python-380/))
 2. comex --lang "java" --code-file \<File directory\> --graphs "cfg,dfg"
 3. dot -T png -o \<File directory for output cfg png\> \<File directory for comex output\>
