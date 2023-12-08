@@ -30,9 +30,9 @@ git clone https://github.com/nDevised/TaintAnalysis.git
 5. **Path Expression**: [https://mvnrepository.com/artifact/de.fraunhofer.iem/pathexpression](https://mvnrepository.com/artifact/de.fraunhofer.iem/pathexpression)
 links.
 6. Google Drive Archive (backup): [Google Drive Link](https://drive.google.com/drive/folders/1wPsFTwMdf0AIYBiDTeZbnXPk3idQja-h?usp=sharing)
-7. **COMEX**: https://pypi.org/project/comex/ (For visual CFGS)
+7. COMEX: https://pypi.org/project/comex/ (For visual CFGS)
 8. GraphViz: https://graphviz.org/download/ (For compiling COMEX CFGs)
-
+9. Python: 3.8 https://www.python.org/downloads/release/python-380/
 ### Configuring IntelliJ IDEA
 
 1. Open the cloned repository in IntelliJ IDEA.
@@ -53,10 +53,16 @@ The TaintAnalysis tool is based on a fork of a repository by kadirayk and utiliz
 - Utilizes SOOT’s IFDS functionality and Hero’s Jimple IFDS solver.
 - Capability to handle different types of data flows in Java programs, focusing on string objects.
 
-## Usage
+## Usage of SOOT
 
 The visual usage of our SOOT library can be seen in this Youtube video:
 Youtube video for our SOOT implementation running: https://www.youtube.com/watch?v=Ji4r_-sXus0
+
+## Usage of COMEX + GPT-4:
+1. Install all dependencies for COMEX ([COMEX](https://pypi.org/project/comex/), [GraphViz](https://graphviz.org/download/), [Python 3.8](https://www.python.org/downloads/release/python-380/)
+2. comex --lang "java" --code-file <File directory>  --graphs "cfg,dfg"
+3. dot -T png -o <File directory for output cfg png> <File directory for comex output> 
+4. Use query: Generate a taint analysis propagation for this provided control flow graph in this image. Determine what is the taint from the provided control flow graph. Get ALL possible taint (perform a may-taint analysis).
 
 
 
