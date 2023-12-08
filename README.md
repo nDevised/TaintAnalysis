@@ -2,6 +2,8 @@
 
 TaintAnalysis is a static analysis tool developed using the Soot framework. It is designed to identify and analyze potentially tainted data sources and their propagation through Java programs.
 
+Youtube video for our SOOT implementation running: https://www.youtube.com/watch?v=Ji4r_-sXus0
+
 ## Getting Started
 
 ### Prerequisites
