@@ -2,8 +2,6 @@
 
 TaintAnalysis is a static analysis tool developed using the Soot framework. It is designed to identify and analyze potentially tainted data sources and their propagation through Java programs.
 
-Youtube video for our SOOT implementation running: https://www.youtube.com/watch?v=Ji4r_-sXus0
-
 ## Getting Started
 
 ### Prerequisites
@@ -32,7 +30,8 @@ git clone https://github.com/nDevised/TaintAnalysis.git
 5. **Path Expression**: [https://mvnrepository.com/artifact/de.fraunhofer.iem/pathexpression](https://mvnrepository.com/artifact/de.fraunhofer.iem/pathexpression)
 links.
 6. Google Drive Archive (backup): [Google Drive Link](https://drive.google.com/drive/folders/1wPsFTwMdf0AIYBiDTeZbnXPk3idQja-h?usp=sharing)
-7. **COMEX**: https://github.com/IBM/tree-sitter-codeviews 
+7. **COMEX**: https://pypi.org/project/comex/ (For visual CFGS)
+8. GraphViz: https://graphviz.org/download/ (For compiling COMEX CFGs)
 
 ### Configuring IntelliJ IDEA
 
@@ -56,7 +55,10 @@ The TaintAnalysis tool is based on a fork of a repository by kadirayk and utiliz
 
 ## Usage
 
-Detailed instructions on how to use the tool are included in the project documentation. It includes setting up the analysis environment, specifying sources and sinks, and running the analysis.
+The visual usage of our SOOT library can be seen in this Youtube video:
+Youtube video for our SOOT implementation running: https://www.youtube.com/watch?v=Ji4r_-sXus0
+
+
 
 ## Contributing
 
