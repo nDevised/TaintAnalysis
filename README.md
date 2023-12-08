@@ -56,10 +56,13 @@ The TaintAnalysis tool is based on a fork of a repository by kadirayk and utiliz
 ## Usage of SOOT
 
 The visual usage of our SOOT library can be seen in this Youtube video:
-Youtube video for our SOOT implementation running: https://www.youtube.com/watch?v=Ji4r_-sXus0
+ https://www.youtube.com/watch?v=Ji4r_-sXus0
+- To access this "Main" file go to `TaintAnalysis > src > test > java > run > Main.java`
+- Follow how the video sets the parameters for each test performed in the paper
 
 ## Usage of COMEX + GPT-4:
 Video of COMEX: https://youtu.be/BBkz_Agj4Mg
+- To access all tests used in the video's Java code go to `TaintAnalysis > src > test > java > target.taint`
 1. Install all dependencies for COMEX ([COMEX](https://pypi.org/project/comex/), [GraphViz](https://graphviz.org/download/), [Python 3.8](https://www.python.org/downloads/release/python-380/))
 2. comex --lang "java" --code-file \<File directory\> --graphs "cfg,dfg"
 3. dot -T png -o \<File directory for output cfg png\> \<File directory for comex output\>
