@@ -64,8 +64,8 @@ The visual usage of our SOOT library can be seen in this Youtube video:
 Video of COMEX: https://youtu.be/BBkz_Agj4Mg
 - To access all tests used in the video's Java code go to `TaintAnalysis > src > test > java > target.taint`
 1. Install all dependencies for COMEX ([COMEX](https://pypi.org/project/comex/), [GraphViz](https://graphviz.org/download/), [Python 3.8](https://www.python.org/downloads/release/python-380/))
-2. comex --lang "java" --code-file \<File directory\> --graphs "cfg,dfg"
-3. dot -T png -o \<File directory for output cfg png\> \<File directory for comex output\>
+2. Execute command `comex --lang "java" --code-file <File director for comex outputy> --graphs "cfg,dfg"`
+3. Execute command `dot -T png -o <File directory for output cfg png> <File directory for comex output>`
 4. Use query: Generate a taint analysis propagation for this provided control flow graph in this image. Determine what is the taint from the provided control flow graph. Get ALL possible taint (perform a may-taint analysis).
 
 
