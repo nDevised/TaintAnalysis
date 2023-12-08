@@ -1,6 +1,3 @@
-Based on the document provided, here is a draft of the README.md file for the TaintAnalysis GitHub repository. This README includes the necessary steps for setting up the project, the dependencies required, and a brief overview of the project's purpose.
-
-
 # TaintAnalysis
 
 TaintAnalysis is a static analysis tool developed using the Soot framework. It is designed to identify and analyze potentially tainted data sources and their propagation through Java programs.
